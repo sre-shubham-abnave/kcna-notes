@@ -1,0 +1,17 @@
+Deployment rollout status command
+kubectl rollout status deployment.apps/myapp-deployment
+
+Rollout history command
+
+kubectl rollout history deployment.apps/myapp-deployment
+
+
+Command to annotate deployment
+kubectl annotate deployment myapp-deployment kubernetes.io/change-cause="Using annotate command to add change cause"
+
+Command to update the deployment
+kubectl set image deployment myapp-deployment nginx=1.29.8
+
+
+To undo latest deployment
+ kubect rollout undo deployment myapp-deployment
