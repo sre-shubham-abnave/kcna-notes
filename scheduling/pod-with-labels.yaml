@@ -5,7 +5,7 @@ metadata:
   labels:
     app: myapp
     tier: frontend
-    environment: dev
+    environment: development
   annotations:
     description: "This is a pod with multiple labels and annotations"
 spec:
