@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-pod
+  labels:
+    app: myapp
+    tier: frontend
+    environment: dev
+  annotations:
+    description: "This is a pod with multiple labels and annotations"
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+    ports:
+      - containerPort: 80
