@@ -41,3 +41,16 @@ tolerations:
 - Taints do not schedule Pods by themselves; they only repel Pods that do not tolerate them.
 - A Pod can tolerate multiple taints.
 - `NoExecute` is the only effect that can evict existing Pods from a Node.
+
+## Example command
+```bash
+kubectl taint nodes minikube app=myapp:NoSchedule
+```
+
+## Important distinction
+Taints and tolerations only **decide which Pods can be scheduled** on a Node.
+They do **not guarantee** that a Pod with matching toleration will be scheduled on that tainted Node.
+
+To guarantee that a Pod gets scheduled on a specific Node, use `nodeAffinity` or `nodeSelector`:
+- `nodeSelector` matches Node labels exactly.
+- `nodeAffinity` provides more advanced scheduling rules (required or preferred).

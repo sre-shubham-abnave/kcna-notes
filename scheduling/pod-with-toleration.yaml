@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myapp-pod-toleration
+  labels:
+    app: myapp
+  annotations:
+    description: "This pod has a toleration for a specific taint"
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+  tolerations:
+  - key: "app"
+    operator: "Equal"
+    value: "myapp"
+    effect: "NoSchedule"
