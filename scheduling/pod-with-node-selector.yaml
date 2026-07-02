@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myapp-pod-with-node-selector
+  labels:
+    app: myapp
+  annotations:
+    description: "This pod has a node selector"
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+  nodeSelector:
+    size: Large
