@@ -1,7 +1,23 @@
-if you have only worker node and not master node, still you can schedule a pods on node. by using static pods
+# Static Pods
 
-static pods can be created by placing a pod manifest file in the /etc/kubernetes/manifests directory on the node. The kubelet will automatically create and manage the pod based on the manifest file. Static pods are not managed by the Kubernetes API server, so they do not have a corresponding Pod object in the API.
-if file is deleted form /etc/kubernetes/manifests directory, the kubelet will automatically delete the static pod from the node.
+Static Pods are managed directly by the `kubelet` on a node, not by the Kubernetes API server.
 
+## How static Pods work
+- A static Pod manifest is placed on a node in the directory `/etc/kubernetes/manifests`.
+- The `kubelet` monitors that directory and automatically creates or updates the Pod based on the manifest file.
+- Static Pods do not have a corresponding Pod object in the Kubernetes API server.
 
-kube-scheduler is not involved in scheduling static pods, as they are created and managed directly by the kubelet on the node. This means that static pods will always be scheduled on the node where their manifest file is located, regardless of any scheduling constraints or policies that may be in place.
+## Behavior
+- If the manifest file is removed from `/etc/kubernetes/manifests`, the `kubelet` automatically deletes the static Pod.
+- The `kube-scheduler` is not involved in static Pod creation.
+- The Pod always runs on the node where its manifest file exists.
+
+## Use cases
+- Bootstrapping control plane components on a single-node cluster.
+- Running node-level or bootstrap services before the cluster is fully functional.
+
+## Notes
+- Static Pods are useful when you need a Pod to exist on a node even if the API server is not available.
+- Because static Pods are not managed through the API, features such as Deployments, ReplicaSets, and DaemonSets do not apply to them.
+- Static Pods are typically used only for system or bootstrap workloads, not regular application workloads.
+
