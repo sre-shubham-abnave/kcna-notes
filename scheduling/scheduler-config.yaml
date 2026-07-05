@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=https://json.schemastore.org/kube-scheduler-config.json
+apiVersion: kubescheduler.config.k8s.io/v1
+kind: KubeSchedulerConfiguration
+profiles:
+  - schedulerName: my-scheduler
+leadershipElection:
+  leaderElect: true
+  resourceName: lock-obj-my-scheduler
+  resourceNamespace: kube-system
