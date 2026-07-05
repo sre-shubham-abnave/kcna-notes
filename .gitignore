@@ -1,0 +1,12 @@
+# Ignore certificate and key files
+*.crt
+*.key
+*.pem
+
+# Also ignore certificate signing requests just in case
+*.csr
+
+# Local editor/temp files
+*.swp
+*.swo
+.DS_Store

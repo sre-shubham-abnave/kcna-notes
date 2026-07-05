@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://json.schemastore.org/kube-scheduler-config.json
+# yaml-language-server: disable
 apiVersion: kubescheduler.config.k8s.io/v1
 kind: KubeSchedulerConfiguration
 profiles:
