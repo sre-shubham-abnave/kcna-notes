@@ -13,6 +13,33 @@ RBAC in Kubernetes grants permissions by associating subjects (users, service ac
 - **RoleBinding** (namespaced) — attaches a Role to subjects within a namespace.
 - **ClusterRoleBinding** (cluster-wide) — attaches a ClusterRole to subjects across the cluster.
 
+## Namespaced RBAC — what does it mean?
+When `Role` and `RoleBinding` are **namespaced**, it means:
+
+1. **Scope** — a Role and RoleBinding belong to a specific namespace. You must specify the namespace (metadata.namespace) when creating them, or they default to the active namespace in your kubeconfig.
+
+2. **Permissions are namespace-local** — a Role in namespace `production` only controls access to resources within `production`. A Role in namespace `development` does not affect permissions in `production`.
+
+3. **Example**: 
+   - Role in namespace `dev`: allows creating Pods — grants permission to create Pods **only** in the `dev` namespace.
+   - User with this RoleBinding in `dev` cannot create Pods in `production` (a separate namespace).
+
+4. **Contrast with ClusterRole/ClusterRoleBinding** — these are cluster-wide and not scoped to any namespace. A ClusterRole can define permissions across all namespaces (e.g., read all Pods everywhere).
+
+For example:
+```bash
+# Show Roles in the current namespace
+kubectl get roles
+
+# Show Roles in a specific namespace
+kubectl get roles -n production
+
+# Create a Role in a specific namespace
+kubectl create -f role.yaml -n production
+```
+
+This design allows multi-tenant clusters where each team has a namespace and its own RBAC policies.
+
 ## Rule syntax
 Each rule in a role specifies:
 - `apiGroups` — API groups (e.g., `""` for core, `"apps"` for deployments, `"batch"` for jobs).
