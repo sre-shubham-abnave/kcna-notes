@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-with-pvt-image
+spec:
+  containers:
+    - name: private-nginx
+      image: abnaveshubham/basic-nginx-private:v1  
+  imagePullSecrets:
+  - name: abnave-docker-creds    
