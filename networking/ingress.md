@@ -1,0 +1,1 @@
+We can this ingress as L7 load balancer built inside kuberntes cluster
