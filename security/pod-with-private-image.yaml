@@ -7,4 +7,4 @@ spec:
     - name: private-nginx
       image: abnaveshubham/basic-nginx-private:v1  
   imagePullSecrets:
-  - name: abnave-docker-creds    
+  - name: abnave-docker-creds 
