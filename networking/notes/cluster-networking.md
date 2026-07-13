@@ -1,10 +1,25 @@
-master node should accept connection on port 6443
+# Cluster networking essentials
 
-kubelet on master and worker node listen on 10250 port
-kube scheuduler required port 10259 to be open
-kube controller manager rquires 10257
-etcd server listens on 2379
-if we have multiple master, than etcd clients commumicate with each other on port 2380
-worker nodes expose services on this port range: 30000-32767
+These are important Kubernetes networking and port concepts for KCNA revision.
 
-Documentation : https://kubernetes.io/docs/reference/networking/ports-and-protocols/
+## Control plane ports
+- API server: port 6443
+  - This is the main entry point for cluster access.
+- kubelet: port 10250
+  - Runs on both control plane and worker nodes.
+- kube-scheduler: port 10259
+  - Used by the scheduler process.
+- kube-controller-manager: port 10257
+  - Used by the controller manager.
+- etcd client port: 2379
+  - Used by clients to talk to etcd.
+- etcd peer port: 2380
+  - Used for etcd communication between members in a multi-master setup.
+
+## NodePort service range
+- Kubernetes uses ports 30000-32767 for NodePort services.
+
+## KCNA exam takeaway
+Know the common Kubernetes ports and their purpose, especially the API server, kubelet, scheduler, controller manager, and etcd.
+
+Reference: https://kubernetes.io/docs/reference/networking/ports-and-protocols/

@@ -1,21 +1,24 @@
-We will discuss the DNS resolution done within the cluster
+# DNS in Kubernetes
 
+Kubernetes uses DNS for service discovery inside the cluster.
 
-service dns has these component
+## CoreDNS
+- CoreDNS is the standard DNS service used in Kubernetes clusters.
+- It resolves names for Services and Pods.
 
-Hostname: web-service ( service name)
-Namespace: myapps 
-Type: svc
-Root: cluster.local
+## Service DNS format
+A Service gets a DNS name in this format:
+- service-name.namespace.svc.cluster.local
 
-DNS name: web-service.myapps.svc.cluster.local
+Example:
+- web-service.myapps.svc.cluster.local
 
+## Pod DNS format
+A Pod gets a DNS name in this format:
+- pod-ip-with-dashes.namespace.pod.cluster.local
 
-POD dns
+Example:
+- 10-244-2-5.myapps.pod.cluster.local
 
-Hostname: 10-244-2-5 (pod ip with dash separated)
-Namespace: myapps 
-Type: pod
-Root: cluster.local
-
-DNS name: 10-244-2-5.myapps.pod.cluster.local
+## KCNA exam takeaway
+DNS helps Pods and Services discover each other by name, but DNS is not the feature that creates the pod network itself.
