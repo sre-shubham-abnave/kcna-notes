@@ -20,6 +20,12 @@ An OCI image typically includes:
 
 This is the spec that ensures container images can be built, stored, and run in a portable way.
 
+Example tools and technologies that implement or rely on this spec:
+- Docker: builds and runs OCI-compliant images
+- containerd: pulls and manages OCI images
+- Kubernetes: runs containers from OCI images
+- Buildah and Podman: build and manage OCI images
+
 ### 2) Runtime Specification (runtime-spec)
 This spec defines how a container runtime should execute a container from a filesystem bundle.
 
@@ -30,6 +36,11 @@ It focuses on:
 
 In simple terms, `runtime-spec` is about how containers are run, not how images are structured.
 
+Example tools and technologies that implement this spec:
+- runc: a widely used OCI runtime
+- containerd: uses OCI runtime concepts for container execution
+- CRI-O: implements container runtime behavior for Kubernetes
+
 ### 3) Distribution Specification (distribution-spec)
 This spec defines how container images should be distributed and fetched from registries.
 
@@ -39,6 +50,12 @@ It is about:
 - transport and distribution of content
 
 It helps standardize how images move between registries and clients.
+
+Example tools and technologies that use or support this spec:
+- Docker Hub: a public container registry
+- Harbor: an enterprise container registry
+- Azure Container Registry: a managed OCI image registry
+- Google Artifact Registry: supports container image distribution
 
 ## KCNA exam takeaway
 If a question asks:

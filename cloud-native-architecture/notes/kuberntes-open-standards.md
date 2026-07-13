@@ -27,6 +27,11 @@ It defines operations such as:
 - pulling images
 - monitoring container lifecycle
 
+Example tools and technologies:
+- containerd: a popular CRI-compatible container runtime
+- CRI-O: a lightweight Kubernetes-native container runtime
+- Docker is not the direct CRI implementation in modern Kubernetes setups, but containerd is commonly used behind the scenes
+
 ### 2) CNI - Container Network Interface
 CNI is the standard interface for networking plugins in Kubernetes.
 
@@ -39,6 +44,11 @@ Examples include:
 - Calico
 - Flannel
 - Cilium
+
+Example tools and technologies:
+- Calico: CNI plugin for network policy and routing
+- Flannel: simple overlay networking
+- Cilium: eBPF-based CNI plugin with advanced networking and security features
 
 ### 3) CSI - Container Storage Interface
 CSI is the standard interface for storage plugins.
@@ -53,6 +63,11 @@ Examples include:
 - Azure Disk CSI driver
 - Ceph CSI driver
 
+Example tools and technologies:
+- AWS EBS CSI Driver: integrates Kubernetes with Amazon EBS
+- Azure Disk CSI Driver: integrates Kubernetes with Azure managed disks
+- Ceph CSI Driver: connects Kubernetes to Ceph storage
+
 ### 4) SMI - Service Mesh Interface
 SMI is an interface for service mesh features in Kubernetes.
 
@@ -62,6 +77,11 @@ It helps standardize capabilities such as:
 - service identity and access control
 
 It is mainly used in service-mesh-related integrations.
+
+Example tools and technologies:
+- Istio: a popular service mesh that supports service-mesh features
+- Linkerd: a lightweight service mesh with traffic management capabilities
+- Consul Connect: service mesh features for service-to-service communication
 
 ## KCNA exam takeaway
 If you see a question about Kubernetes extensibility, remember these interfaces:
