@@ -114,6 +114,15 @@ In short:
 - Profiles customize behavior.
 - Multiple schedulers provide separate scheduling engines.
 
+### Quick exam observation
+
+This is one of the ultimate trick questions on Kubernetes exams. The short answer is: you use the exact same property, `spec.schedulerName`.
+
+- For a **scheduling profile**, the pod uses `spec.schedulerName` to match a profile name defined inside the default scheduler configuration.
+- For **multiple schedulers**, the pod uses `spec.schedulerName` to match the name of a separate scheduler process.
+
+So the pod does not care how the scheduler is implemented. It only leaves a name in `spec.schedulerName` and waits for whichever scheduler process claims that name.
+
 ---
 
 ## 8. KCNA exam takeaway
